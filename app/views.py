@@ -1,3 +1,4 @@
+import random
 from flask import render_template, url_for, request, redirect, flash, session
 from app import app, db
 from app.forms import LoginForm, ComplainForm
@@ -13,7 +14,9 @@ def main():
         form.sex.data = 'female'
 
     if form.validate_on_submit():
-        return redirect('Ты мой бедный зайка!')
+        rand = random.randrange(0, db.session.query(Consolation).count())
+        consolation = Consolation.query.get(int(rand))
+        return render_template('consolation.html', consolation=consolation)
 
     return render_template('main.html', form=form)
 

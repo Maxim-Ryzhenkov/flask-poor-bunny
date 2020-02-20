@@ -1,30 +1,26 @@
 <div class="formwrapper">
-    <h3 class="title align-center">ОПИШИТЕ ВАШУ ПРОБЛЕМУ:</h3>
+    <h3 class="title align-center"></h3>
     <form method="POST" action="">
 
         {{ form.csrf_token }}
 
-        <div class="justify-content-md-center align-center">
-
-            {{ form.sex.label }}
-            {% for subfield in form.sex %}
-            <tr>
-                <td>{{ subfield(class="form-check-input mx-3", type="radio") }}</td>
-                <td>{{ subfield.label(class="mx-3")  }}</td>
-            </tr>
-            {% endfor %}
-
-        </div>
-        <div class="form-group">
-            {{ form.complain_text(class="form-control", placeholder="Пожалуйста, не молчи, даже от простого 'Ох' или 'ой' тебе полегчает, точно точно!") }}
+        <div class="form-group my-2">
+            {{ form.complain_text(class="form-control form-control-lg h-100", placeholder="Опишите вашу проблему...") }}
             {% if form.complain_text.errors %}
-            <ul class="errors">
                 {% for error in form.complain_text.errors %}
-                <li>{{ error }}</li>
+                <small id="passwordHelpBlock" class="form-text text-muted">{{ error }}</small>
                 {% endfor %}
-            </ul>
             {% endif %}
         </div>
-        {{ form.submit(class="btn btn-primary rtn-lg align-center") }}
+
+        <div class="form-check form-check-inline mt-2 mb-4">
+            {{ form.sex.label }}
+            {% for subfield in form.sex %}
+                {{ subfield(class="form-check-input ml-5", type="radio") }}
+                {{ subfield.label(class="form-check-label ml-1") }}
+            {% endfor %}
+        </div>
+
+        {{ form.submit(class="btn btn-primary btn-block btn-lg align-center my-4 py-1") }}
     </form>
 </div>
