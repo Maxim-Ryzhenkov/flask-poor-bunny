@@ -6,9 +6,9 @@ from app.models import User, Consolation, Gender
 def create_admin():
     new_user = User(username='admin', email='admin@admin.ru')
     new_user.is_admin = True
-    new_user.set_password('password')
     db.session.add(new_user)
     db.session.commit()
+    new_user.set_password('password')
     print_db_table(User)
 
 
@@ -58,6 +58,7 @@ if __name__ == '__main__':
                {'gender': 'female', 'gender_ru': 'женщина'},
                {'gender': 'unknown', 'gender_ru': 'неизвестно'}]
 
-    create_genders(genders)
-    create_consolations(consolations)
+    # create_genders(genders)
+    # create_consolations(consolations)
     create_admin()
+    #clear_db_table(User)
