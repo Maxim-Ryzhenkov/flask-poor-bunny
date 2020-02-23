@@ -2,31 +2,30 @@
 
 {% block content %}
 
-<!--Шаблон сатраницы-->
+<div class="row mt-5 justify-content-md-center">
+    <a class="btn btn-danger mx-2" href="{{ url_for('female') }}" role="button">Я женщина</a>
+    <a class="btn btn-primary mx-2" href="{{ url_for('male') }}" role="button">Я мужчина</a>
+    <a class="btn btn-outline-primary mx-2" href="{{ url_for('unknown') }}" role="button">Не скажу</a>
+</div>
 
-<a class="btn btn-primary" href="{{ url_for('female') }}" role="button">
-    Я женщина
-  </a>
-<a class="btn btn-primary" href="{{ url_for('male') }}" role="button">
-    Я мужчина
-  </a>
-<a class="btn btn-primary" href="{{ url_for('unknown') }}" role="button">
-    Не скажу
-  </a>
+<div class="row mt-5 justify-content-md-center">
+    <h3>Услышали слова поддержки:</h3>
+</div>
 
-<h3>Услышали слова поддержки:</h3>
-<ul class="list-group">
-  <li class="list-group-item d-flex justify-content-between align-items-center">
-    Женщины
-    <span class="badge badge-primary badge-pill">14</span>
-  </li>
-  <li class="list-group-item d-flex justify-content-between align-items-center">
-    Мужчины
-    <span class="badge badge-primary badge-pill">2</span>
-  </li>
-  <li class="list-group-item d-flex justify-content-between align-items-center">
-    Не представились
-    <span class="badge badge-primary badge-pill">1</span>
-  </li>
-</ul>
+<div class="row mt-3 justify-content-md-center">
+    <ul class="list-group">
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            Женщины
+            <span class="badge badge-primary badge-pill ml-4">14</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            Мужчины
+            <span class="badge badge-primary badge-pill ml-4">2</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            Не представились
+            <span class="badge badge-primary badge-pill ml-4">1</span>
+        </li>
+    </ul>
+</div>
 {% endblock %}
