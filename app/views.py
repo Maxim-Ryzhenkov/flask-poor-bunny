@@ -2,7 +2,7 @@ import random
 from flask import render_template, url_for, request, redirect, flash, session
 from app import app, db
 from app.forms import LoginForm, ComplainForm
-from app.models import User, Complaint, Consolation
+from app.models import User, Gender, Consolation
 from flask_login import current_user, login_user, logout_user, login_required, user_logged_in
 from werkzeug.urls import url_parse
 

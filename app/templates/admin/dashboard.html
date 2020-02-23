@@ -9,47 +9,8 @@
         <div class="col-md-6">
             <div class="well">
 
-                <h2>Заявки</h2>
-                <p>{{ applicants|length }} всего, 6 распределены, 3 не распределены.</p>
-
-                <h3>Новые заявки</h3>
-                <table class="table">
-                    {% for group in groups %}
-                    <tr>
-                        <td><a href="/">{{ group.title }}</a></td>
-                        <td>{{ group.students }} / {{ group.max_students }} набрано</td>
-                        <td>{% if group.students < group.max_students %} есть места
-                            {% else %} мест нет
-                            {% endif %}
-                        </td>
-                    </tr>
-                    {% endfor %}
-
-                </table>
-                <br>
-
-                <a href="" class></a>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="well">
-
-                <h2>Группы</h2>
-                <br>
-                <table class="table">
-                    {% for group in groups %}
-                    <tr>
-                        <td><a href="/">{{ group.title }}</a></td>
-                        <td>{{ group.students }} / {{ group.max_students }} набрано</td>
-                        <td>{% if group.students < group.max_students %} есть места
-                            {% else %} мест нет
-                            {% endif %}
-                        </td>
-                    </tr>
-                    {% endfor %}
-
-                </table>
-
+                <h2>Наш дашборд</h2>
+                <p>Тут будет полезная статистика и оповещения</p>
             </div>
         </div>
     </div>

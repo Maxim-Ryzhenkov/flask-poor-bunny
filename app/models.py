@@ -15,7 +15,7 @@ class User(UserMixin, db.Model):
     last_seen = db.Column(db.DateTime, default=datetime.utcnow)
 
     def __repr__(self):
-        return f'{self.username}'
+        return f'{self.username} {self.email}'
 
     def __init__(self, username, email):
         self.username = username
@@ -33,21 +33,30 @@ def load_user(id):
     return User.query.get(int(id))
 
 
-class Complaint(db.Model):
-    __tablename__ = "complaints"
+class Counter(db.Model):
+    __tablename__ = "counters"
     id = db.Column(db.Integer, primary_key=True)
-    date_time = db.Column(db.DateTime, default=datetime.utcnow)
-    is_female = db.Column(db.Boolean, default=True)
-    text = db.Column(db.String(500))
+    male = db.Column(db.Integer, default=0)
+    female = db.Column(db.Integer, default=0)
+    unknown = db.Column(db.Integer, default=0)
+
+
+class Gender(db.Model):
+    __tablename__ = "genders"
+    id = db.Column(db.Integer, primary_key=True)
+    gender = db.Column(db.String(20))
+    gender_ru = db.Column(db.String(20))
+    consolations = db.relationship("Consolation", back_populates="gender")
 
     def __repr__(self):
-        return f'{self.text.capitalize()}'
+        return f'{self.gender_ru.capitalize()}'
 
 
 class Consolation(db.Model):
     __tablename__ = "consolations"
     id = db.Column(db.Integer, primary_key=True)
-    is_female = db.Column(db.Boolean, default=True)
+    gender_id = db.Column(db.Integer, db.ForeignKey("genders.id"))
+    gender = db.relationship("Gender", back_populates="consolations")
     text = db.Column(db.String(500))
 
     def __repr__(self):

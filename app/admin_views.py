@@ -3,7 +3,7 @@ from flask_admin import Admin, AdminIndexView, expose
 from flask_login import current_user, login_required
 from app import db, app
 
-from app.models import User, Complaint, Consolation
+from app.models import User, Gender, Consolation
 from flask import abort
 
 
@@ -26,18 +26,15 @@ class UserView(ModelView):
     column_filters = ['email']
 
 
-class ComplaintView(ModelView):
-    def is_accessible(self):
-        return current_user.is_authenticated and current_user.is_admin
-
-
 class ConsolationView(ModelView):
     def is_accessible(self):
         return current_user.is_authenticated and current_user.is_admin
 
+    column_labels = dict(text='Текст поддержки', gender='Пол')
+    column_sortable_list = ['text', ('gender', 'gender.gender_ru')]
+    column_filters = ['text', 'gender']
+
 
 admin = Admin(app, template_mode='bootstrap3', name='Админка', index_view=DashboardView(name='Статистика'))
 admin.add_view(UserView(User, db.session, name='Пользователи'))
-admin.add_view(ComplaintView(Complaint, db.session, name='Жалобы'))
-admin.add_view(ConsolationView(Consolation, db.session, name='Заказы'))
-
+admin.add_view(ConsolationView(Consolation, db.session, name='Слова поддержки'))
