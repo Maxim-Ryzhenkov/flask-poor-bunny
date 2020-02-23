@@ -5,7 +5,7 @@
         {{ form.csrf_token }}
 
         <div class="form-group my-2">
-            {{ form.complain(class="form-control form-control-lg h-100", placeholder="Опишите вашу проблему...") }}
+            {{ form.complain(class="form-control form-control-lg", rows="7",placeholder="Опишите вашу проблему...") }}
             {% if form.complain.errors %}
                 {% for error in form.complain.errors %}
                 <small id="passwordHelpBlock" class="form-text text-muted">{{ error }}</small>
