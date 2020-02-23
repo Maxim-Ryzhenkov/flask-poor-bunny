@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row mt-5 justify-content-md-center">
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary m-2" data-toggle="modal" data-target="#about_for_female">
+        Текст для женщин
+    </button>
+
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary m-2" data-toggle="modal" data-target="#about_for_male">
+        Текст для мужчин
+    </button>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="about_for_female" tabindex="-1" role="dialog" aria-labelledby="about_for_female_label"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="about_for_female_label">О проекте</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body px-3">
+                <p class="text-justify py-2 px-3">
+                    Рыбки мои, солнышки мои! Вот эту штуковину мы с девчонками придумали специально,
+                    чтобы хоть где-то мы с вами могли найти утешение!<br><br>
+                    Вот скажите, часто же бывает, что приходишь к своему мачо за словами одобрения,
+                    а он рвется немедленно решать проблему! И как пристанет, смотрит на тебя как злой полицейский
+                    и вытяяягивает - "ЧТО У ТЕБЯ НЕ ТАК???"!
+                    И грустно так сразу(( А хочется, чтобы пожалеееели, чтобы обняяяяяли...
+                    сказали "не плачь, зайчик, все будет хорошо"... Но мужчина рвется на подвиги!...
+                    Или, того хуже, промямлит с дивана что-то вроде "ага-ага"(((<br><br>
+                    И куда же тогда идти? Только сюда.<br>
+                    Признаюсь честно, сама захожу по нескольку раз на дню! )))<br>
+                    И вроде глупая вещь, а ведь помогает, девчонки!<br><br>
+                    Вооот )) Придумала <a href="https://twitter.com/kashasaltsova/status/342593434042892289">Кашечка</a>,
+                    <a href="http://vk.com/etipanova" class="tooltip-test" title="Екатерина Типанова">я</a> всё досочинила, а сайт сделали
+                    <a href="http://breqwas.livejournal.com/">Тёма</a> и
+                    <a href="https://twitter.com/greyevil">Серёжа</a>, компьютерщики. Мы
+                    молодцы)))
+                </p>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Ура!</button>
+                <button type="button" class="btn btn-primary">Кнопка для действия</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="about_for_male" tabindex="-1" role="dialog" aria-labelledby="about_for_male_label"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="about_for_male_label">О проекте</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p class="text-justify py-2 px-3">
+                    Данный сайт реализует оптимальный алгоритм обработки женских жалоб:
+                    в качестве решения подставляется один из заранее подготовленных правильных ответов,
+                    сама жалоба при этом не анализируется и не сохраняется.
+                    Эффективность метода поражает воображение, и если вам кажется, что это какой-то абсурд -
+                    просто вспомните ещё раз, для обработки <i>чего</i>> он предназначен.
+                </p>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Понятно.</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-5 justify-content-md-center">
+    Идея - kashasaltsova, развитие и тексты - etipanova, реализация - breqwas и greyevil.
+</div>
+
+{% endblock %}

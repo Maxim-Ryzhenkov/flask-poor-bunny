@@ -5,20 +5,12 @@
         {{ form.csrf_token }}
 
         <div class="form-group my-2">
-            {{ form.complain_text(class="form-control form-control-lg h-100", placeholder="Опишите вашу проблему...") }}
-            {% if form.complain_text.errors %}
-                {% for error in form.complain_text.errors %}
+            {{ form.complain(class="form-control form-control-lg h-100", placeholder="Опишите вашу проблему...") }}
+            {% if form.complain.errors %}
+                {% for error in form.complain.errors %}
                 <small id="passwordHelpBlock" class="form-text text-muted">{{ error }}</small>
                 {% endfor %}
             {% endif %}
-        </div>
-
-        <div class="form-check form-check-inline mt-2 mb-4">
-            {{ form.sex.label }}
-            {% for subfield in form.sex %}
-                {{ subfield(class="form-check-input ml-5", type="radio") }}
-                {{ subfield.label(class="form-check-label ml-1") }}
-            {% endfor %}
         </div>
 
         {{ form.submit(class="btn btn-primary btn-block btn-lg align-center my-4 py-1") }}

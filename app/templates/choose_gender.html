@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!--Шаблон сатраницы-->
+
+<a class="btn btn-primary" href="{{ url_for('female') }}" role="button">
+    Я женщина
+  </a>
+<a class="btn btn-primary" href="{{ url_for('male') }}" role="button">
+    Я мужчина
+  </a>
+<a class="btn btn-primary" href="{{ url_for('unknown') }}" role="button">
+    Не скажу
+  </a>
+
+<h3>Услышали слова поддержки:</h3>
+<ul class="list-group">
+  <li class="list-group-item d-flex justify-content-between align-items-center">
+    Женщины
+    <span class="badge badge-primary badge-pill">14</span>
+  </li>
+  <li class="list-group-item d-flex justify-content-between align-items-center">
+    Мужчины
+    <span class="badge badge-primary badge-pill">2</span>
+  </li>
+  <li class="list-group-item d-flex justify-content-between align-items-center">
+    Не представились
+    <span class="badge badge-primary badge-pill">1</span>
+  </li>
+</ul>
+{% endblock %}

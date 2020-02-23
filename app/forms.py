@@ -32,8 +32,7 @@ class LoginForm(FlaskForm):
 class ComplainForm(FlaskForm):
     """ Форма жалобы для бедного зайки """
 
-    sex = RadioField('Вы', choices=[('female', 'женщина'), ('male', 'мужчина')])
-    complain_text = TextAreaField('Опишите вашу проблему',
-                                  validators=[Length(min=2,
-                                                     message='Пожалуйста, не молчи, даже от простого "Ох" или "ой" тебе полегчает, точно точно!')])
+    complain = TextAreaField('Опишите вашу проблему',
+                             validators=[Length(min=2,
+                                                message='Пожалуйста, не молчи, даже от простого "Ох" или "ой" тебе полегчает, точно точно!')])
     submit = SubmitField('ПОЖАЛОВАТЬСЯ')

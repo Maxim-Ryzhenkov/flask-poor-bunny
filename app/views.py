@@ -7,24 +7,62 @@ from flask_login import current_user, login_user, logout_user, login_required, u
 from werkzeug.urls import url_parse
 
 
-@app.route('/', methods=['POST', 'GET'])
-def main():
+@app.route('/')
+@app.route('/main/')
+def choose_gender():
+    session.clear()
+    return render_template('choose_gender.html')
+
+
+@app.route('/male/')
+def male():
+    session['gender'] = 'мужчина'
+    return redirect(url_for('complain'))
+
+
+@app.route('/female/')
+def female():
+    session['gender'] = 'женщина'
+    return redirect(url_for('complain'))
+
+
+@app.route('/unknown/')
+def unknown():
+    session['gender'] = 'неизвестно'
+    return redirect(url_for('complain'))
+
+
+@app.route('/complain/', methods=['GET', 'POST'])
+def complain():
     form = ComplainForm()
-    if request.method == 'GET':
-        form.sex.data = 'female'
 
     if form.validate_on_submit():
-        rand = random.randrange(0, db.session.query(Consolation).count())
-        consolation = Consolation.query.get(int(rand))
-        return render_template('consolation.html', consolation=consolation)
+        return redirect(url_for('consolation'))
+    return render_template('complain.html', form=form)
 
-    return render_template('main.html', form=form)
+
+@app.route('/consolation/')
+def consolation():
+    gender = session.get('gender')
+    rand = random.randrange(1, db.session.query(Consolation).count())
+    consolation = Consolation.query.get(int(rand))
+    return render_template('consolation.html', consolation=consolation)
+
+
+@app.route('/account/<username>/')
+def account(username):
+    return render_template('account.html')
+
+
+@app.route('/about/')
+def about():
+    return render_template('about.html')
 
 
 @app.route('/login/', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
-        return redirect(url_for('main'))
+        return redirect(url_for('choose_gender'))
     form = LoginForm()
 
     if form.validate_on_submit():
@@ -38,7 +76,7 @@ def login():
         login_user(user, remember=form.remember_me.data)
         next_page = request.args.get('next')
         if not next_page or url_parse(next_page).netloc != '':
-            next_page = url_for('main')
+            next_page = url_for('choose_gender')
         return redirect(next_page)
 
     return render_template('auth.html', form=form)
@@ -47,5 +85,5 @@ def login():
 @app.route('/logout/')
 def logout():
     logout_user()
-    session['cart'] = []
-    return redirect(url_for('main'))
+    session.clear()
+    return redirect(url_for('choose_gender'))
