@@ -7,8 +7,8 @@ def create_admin():
     new_user = User(username='admin', email='admin@admin.ru')
     new_user.is_admin = True
     db.session.add(new_user)
-    db.session.commit()
     new_user.set_password('password')
+    db.session.commit()
     print_db_table(User)
 
 
@@ -60,5 +60,7 @@ if __name__ == '__main__':
 
     # create_genders(genders)
     # create_consolations(consolations)
-    create_admin()
-    #clear_db_table(User)
+    #create_admin()
+    # clear_db_table(User)
+    # print_db_table(User)
+    
